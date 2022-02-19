@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:masterclass/src/modules/activities/entities/activity_entity.dart';
+import 'package:masterclass/src/modules/activities/resources/strings.dart';
 import 'package:masterclass/theme/colors.dart';
 import 'package:masterclass/theme/icons.dart';
 
@@ -59,7 +60,7 @@ class ActivityItem extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Exercicíos: ${activity.exercicies}",
+                    "${R.excercies}: ${activity.exercicies}",
                     style: const TextStyle(
                       fontSize: 12,
                       color: ThemeColors.description,
@@ -86,7 +87,7 @@ class ActivityItem extends StatelessWidget {
                   const SizedBox(width: 8),
                   const Expanded(
                     child: Text(
-                      "Acessar código fonte",
+                      R.accessSourceCode,
                       style: TextStyle(
                         fontSize: 12,
                       ),
@@ -105,7 +106,7 @@ class ActivityItem extends StatelessWidget {
                       ),
                       onPressed: () => {},
                       child: const Text(
-                        "Ver mais",
+                        R.seeMore,
                         style: TextStyle(
                           fontSize: 10,
                         ),
