@@ -6,7 +6,7 @@ import 'package:masterclass/src/modules/activities/cubit/activities_cubit.dart';
 import 'package:masterclass/src/modules/activities/entities/activity_entity.dart';
 import 'package:masterclass/src/modules/activities/repositories/activities_repository.dart';
 import 'package:masterclass/src/modules/activities/repositories/activities_repository_impl.dart';
-import 'package:masterclass/src/modules/activities/widgets/activity_item.dart';
+import 'package:masterclass/src/modules/activities/widgets/activity_card.dart';
 
 class ActivityList extends StatefulWidget {
   const ActivityList({Key? key}) : super(key: key);
@@ -32,13 +32,14 @@ class _ActivityListState extends State<ActivityList> {
   Widget build(BuildContext context) {
     return BlocBuilder<ActivitiesCubit, List<ActivityEntity>>(
       bloc: cubit..getActivities(),
-      builder: (_, activities) => ListView.separated(
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(16),
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: activities.length,
-        itemBuilder: (_, index) => ActivityItem(activity: activities[index]),
-        separatorBuilder: (_, __) => const SizedBox.shrink(),
+      builder: (_, activities) => RefreshIndicator(
+        onRefresh: () => cubit.getActivities(),
+        child: ListView.separated(
+          padding: const EdgeInsets.all(16),
+          itemCount: activities.length,
+          itemBuilder: (_, index) => ActivityCard(activity: activities[index]),
+          separatorBuilder: (_, __) => const SizedBox.shrink(),
+        ),
       ),
     );
   }

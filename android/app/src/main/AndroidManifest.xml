@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.igguerra.flutter.masterclass.app.masterclass">
    <application
-        android:label="masterclass"
+        android:label="Masterclass"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

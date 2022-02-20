@@ -1,39 +1,95 @@
 import 'package:flutter/material.dart';
+import 'package:masterclass/theme/colors.dart';
 import 'package:masterclass/theme/icons.dart';
 
 class HomeBottomNavigation extends StatelessWidget {
-  const HomeBottomNavigation({Key? key}) : super(key: key);
+  final Function(int) onChangePageIndex;
+  final int currentIndex;
+  const HomeBottomNavigation({
+    Key? key,
+    required this.onChangePageIndex,
+    required this.currentIndex,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       elevation: 0,
+      currentIndex: currentIndex,
       selectedItemColor: Colors.black,
       unselectedItemColor: Colors.black,
       backgroundColor: Colors.transparent,
       items: [
         BottomNavigationBarItem(
-          icon: IconButton(
-            icon: Image.asset(ThemeIcons.target),
-            onPressed: () => {},
+          activeIcon: GestureDetector(
+            onTap: (() => onChangePageIndex(0)),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: ThemeColors.card,
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(ThemeIcons.target),
+            ),
+          ),
+          icon: GestureDetector(
+            onTap: (() => onChangePageIndex(0)),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(ThemeIcons.target),
+            ),
           ),
           label: "Atividades",
         ),
         BottomNavigationBarItem(
-          icon: IconButton(
-            icon: SizedBox(
+          activeIcon: GestureDetector(
+            onTap: (() => onChangePageIndex(1)),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: ThemeColors.card,
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(
+                ThemeIcons.github,
+              ),
+            ),
+          ),
+          icon: GestureDetector(
+            onTap: (() => onChangePageIndex(1)),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              padding: const EdgeInsets.all(8),
               child: Image.asset(ThemeIcons.github),
             ),
-            onPressed: () => {},
           ),
           label: "Repositórios",
         ),
         BottomNavigationBarItem(
-          icon: IconButton(
-            onPressed: () => {},
-            icon: const Icon(
-              Icons.person,
-              size: 36,
+          activeIcon: GestureDetector(
+            onTap: (() => onChangePageIndex(2)),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                color: ThemeColors.card,
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(ThemeIcons.moon),
+            ),
+          ),
+          icon: GestureDetector(
+            onTap: (() => onChangePageIndex(2)),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              padding: const EdgeInsets.all(8),
+              child: Image.asset(ThemeIcons.moon),
             ),
           ),
           label: "Sobre o dev",
